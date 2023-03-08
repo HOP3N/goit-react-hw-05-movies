@@ -5,7 +5,6 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
   const { movieId } = useParams();
   const { movieDetails } = useMovieDetails(movieId);
 
-
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
 

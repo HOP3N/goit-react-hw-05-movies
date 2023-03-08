@@ -9,7 +9,7 @@ const Reviews = () => {
   return (
     <div>
       {movieReviews?.length === 0 && (
-        <p>We don't have any reviews for this movies</p>
+        <p>We don't have any reviews for this movie :(</p>
       )}
       <ul>
         {movieReviews.map(review => {
