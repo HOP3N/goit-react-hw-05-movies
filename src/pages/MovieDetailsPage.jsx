@@ -5,6 +5,7 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
   const { movieId } = useParams();
   const { movieDetails } = useMovieDetails(movieId);
 
+
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
 
@@ -24,10 +25,12 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
       </h2>
 
       <img
-        src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`}
-        alt="{movieDetails.original_title}"
+        src={
+          `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`}
+        // `https://image.tmdb.org/t/p/w400/${movieDetails.poster_path}`}
+        alt='No poster'
       />
-
+      
       <p>
         User Score:{' '}
         {movieDetails.vote_average
@@ -58,6 +61,8 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
       <Outlet />
     </div>
   );
+  
 };
+
 
 export default MovieDetailsPage;
