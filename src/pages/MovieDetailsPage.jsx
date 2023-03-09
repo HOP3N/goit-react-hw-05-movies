@@ -1,10 +1,9 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useMovieDetails } from 'utils/hooks/useMovieDetails';
 
- const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const { movieDetails } = useMovieDetails(movieId);
-
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -23,14 +22,17 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
           : ''}
         )
       </h2>
+      {/* <img
+        src={`https://image.tmdb.org/t/p/w400/${movieDetails.poster_path}` } */}
 
       <img
         src={
-          `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`}
-        // `https://image.tmdb.org/t/p/w400/${movieDetails.poster_path}`}
-        alt='No poster'
+          `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`
+        }
+        // width="400"
+        // height="200"
+        alt={ "pic" ?  movieDetails.original_title : '../components/image-not-found-scaled.png'}
       />
-      
       <p>
         User Score:{' '}
         {movieDetails.vote_average
@@ -61,8 +63,6 @@ import { useMovieDetails } from 'utils/hooks/useMovieDetails';
       <Outlet />
     </div>
   );
-  
 };
-
 
 export default MovieDetailsPage;
