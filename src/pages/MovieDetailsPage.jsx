@@ -1,5 +1,6 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useMovieDetails } from 'utils/hooks/useMovieDetails';
+import imageNotFound from 'components/image-not-found-scaled.png';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -22,16 +23,16 @@ const MovieDetailsPage = () => {
           : ''}
         )
       </h2>
-      {/* <img
-        src={`https://image.tmdb.org/t/p/w400/${movieDetails.poster_path}` } */}
 
       <img
+        width={400}
+        height={400}
         src={
-          `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`
+          movieDetails.poster_path
+            ? `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`
+            : imageNotFound
         }
-        // width="400"
-        // height="200"
-        alt={ "pic" ?  movieDetails.original_title : '../components/image-not-found-scaled.png'}
+        alt={movieDetails.title}
       />
       <p>
         User Score:{' '}
